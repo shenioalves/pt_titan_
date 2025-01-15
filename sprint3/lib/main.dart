@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             color: Colors.white10,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
+              children: <Widget>[
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -96,7 +96,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ],
                 ),
-                ElevatedButton(onPressed: (){}, child:  ),
+                ElevatedButton(onPressed: (){}, child: Container()),
               ],
             )));
   }
