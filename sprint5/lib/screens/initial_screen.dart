@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:sprint5/data/task_inherited.dart';
 import 'package:sprint5/screens/form_screen.dart';
 
-import '../components/task.dart';
-
 class InitialScreen extends StatefulWidget {
   const InitialScreen({super.key});
 
@@ -17,22 +15,23 @@ class _InitialScreenState extends State<InitialScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: Container(),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
         title: const Text(
           'Tarefas',
           style: TextStyle(color: Colors.white, fontSize: 26),
         ),
       ),
       body: ListView(
+        padding: EdgeInsets.only(top: 6, bottom: 70),
         children: TaskInherited.of(context).taskList,
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
         onPressed: () {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => FormScreen(),
+                builder: (contextNew) => FormScreen(taskContext: context,),
               ));
         },
         child: const Icon(

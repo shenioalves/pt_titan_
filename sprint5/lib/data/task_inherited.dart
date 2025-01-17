@@ -5,19 +5,15 @@ import '../components/task.dart';
 class TaskInherited extends InheritedWidget {
   TaskInherited({
     super.key,
-    required Widget child,
-  }) : super(child: child);
+    required super.child,
+  });
 
   final List<Task> taskList = [
     Task('Aprender Flutter', 'assets/images/flutter.png', 1),
     Task('Aprender Ler', 'assets/images/ler.jpg', 2),
-    Task('Aprender Flutter', 'assets/images/flutter.png', 2),
-    Task('Aprender Flutter', 'assets/images/flutter.png', 2),
-    Task('Aprender Jogar', 'assets/images/jogar.jpg', 4),
-    Task('Meditar', 'assets/images/meditar.jpeg', 3),
-    Task('Aprender Jogar', 'assets/images/jogar.jpg', 4),
-    Task('Meditar', 'assets/images/meditar.jpeg', 3),
-    Task('Aprender Jogar', 'assets/images/jogar.jpg', 4),
+    Task('Aprender Jogar', 'assets/images/jogar.jpg', 3),
+    Task('Meditar', 'assets/images/meditar.jpeg', 4),
+    Task('Assistir One Piece', 'assets/images/one.jpg', 5),
   ];
 
   void newTask(String name, String photo, int difficulty) {
