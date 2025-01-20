@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/screens/boas_vindas.dart';
+import 'package:projeto_/screens/welcome.dart';
 
 void main() {
   runApp(const MyApp());
