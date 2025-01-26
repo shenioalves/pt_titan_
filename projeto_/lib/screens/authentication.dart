@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/screens/home.dart';
 
 class FormAuthentication extends StatefulWidget {
   const FormAuthentication({super.key, required this.authenticationContext});
@@ -133,7 +134,15 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                   ),
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                        builder: (newContext) => HomeScreen(
+                                      homeContext: context,
+                                    ),
+                                    ));
+                                  },
                                   child: Align(
                                     alignment: Alignment.center,
                                     child: Text(

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/components/pratos.dart';
+import 'package:projeto_/screens/home.dart';
 import 'package:projeto_/screens/welcome.dart';
 
 void main() {

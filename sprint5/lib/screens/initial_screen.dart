@@ -31,7 +31,9 @@ class _InitialScreenState extends State<InitialScreen> {
           Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (contextNew) => FormScreen(taskContext: context,),
+                builder: (contextNew) => FormScreen(
+                  taskContext: context,
+                ),
               ));
         },
         child: const Icon(
