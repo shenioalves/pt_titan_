@@ -101,7 +101,7 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                 // textAlign: TextAlign.start,
                               ),
                               TextFormField(
-                                validator: (String? value) {
+                                validator: (value) {
                                   if (valueValidator(value)) {
                                     return 'Insira seu primeiro nome!';
                                   }
@@ -114,7 +114,7 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                     borderRadius: BorderRadius.circular(10),
                                     borderSide: BorderSide.none,
                                   ),
-                                  hintText: 'Tony',
+                                  hintText: 'Name',
                                   hintStyle:
                                       TextStyle(color: Color(0xffC2BDBD)),
                                   fillColor: Color(0xffF3F1F1),
@@ -135,13 +135,13 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                        builder: (newContext) => HomeScreen(
-                                      homeContext: context,
-                                    ),
-                                    ));
+                                    if (_FormKey.currentState!.validate()){
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (newContext) => HomeScreen(homeContext: context, name: firstNameController.text),
+                                          ));
+                                    }
                                   },
                                   child: Align(
                                     alignment: Alignment.center,

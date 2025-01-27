@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/screens/addBasket.dart';
+import 'package:projeto_/screens/add_basket.dart';
 
-class CardsPratos extends StatefulWidget {
-  final String image, name, price;
-  final int color;
-  const CardsPratos({super.key, required this.image, required this.name, required this.price, required this.color});
+class Dish extends StatefulWidget {
+  final String image, name;
+  final int price, color;
+  const Dish({super.key, required this.image, required this.name, required this.price, required this.color});
 
 
 
 
   @override
-  State<CardsPratos> createState() => _CardsPratosState();
+  State<Dish> createState() => _DishState();
 }
 
-class _CardsPratosState extends State<CardsPratos> {
+class _DishState extends State<Dish> {
   @override
   Widget build(BuildContext context) {
     var screenWidth = MediaQuery.of(context).size.width;
@@ -25,7 +25,7 @@ class _CardsPratosState extends State<CardsPratos> {
           borderRadius: BorderRadius.circular(16),
           color: Color(widget.color),
         ),
-        width: screenWidth * 0.40,
+        width: screenWidth * 0.41,
         height: screenHeigth * 0.25,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,14 +66,14 @@ class _CardsPratosState extends State<CardsPratos> {
             ),
             SizedBox(
                 child: Text(
-                  widget.name, style: TextStyle(fontSize: 16, color: Color(0xff27214D)),
+                  widget.name, style: TextStyle(fontSize: 15, color: Color(0xff27214D)),
                   textAlign: TextAlign.center,
                 )),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'R\$ ${widget.price}',
+                  'R\$ ${widget.price},00',
                   style: TextStyle(
                       color: Color(0xffFFA451), fontSize: 16),
                 ),
@@ -81,7 +81,7 @@ class _CardsPratosState extends State<CardsPratos> {
                     onPressed: () {
                       Navigator.push(context, MaterialPageRoute(
                         builder: (newContext) => AddBasket(
-                          addCestaContext: context,
+                          addCestaContext: context, image: widget.image, name: widget.name,price: widget.price,
                         ),
                       ));
                     },

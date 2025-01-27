@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/pratos.dart';
+import 'package:projeto_/components/dish_card.dart';
+import 'package:projeto_/screens/my_basket.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.homeContext});
+  final String name;
+  const HomeScreen({super.key, required this.homeContext, required this.name});
 
   final BuildContext homeContext;
 
@@ -15,10 +17,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return LayoutBuilder(builder: (_, constraints) {
       return Scaffold(
-        backgroundColor: Color(0xffFFFFFF),
+        backgroundColor: Colors.white,
         body: SingleChildScrollView(
           child: Padding(
             padding:
@@ -43,7 +44,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     GestureDetector(
                       onTap: () {
-                        print('cesta');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (newContext) =>
+                                    MyBasket(basketContext: context)));
                       },
                       child: SizedBox(
                         child: Column(
@@ -71,8 +76,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 SizedBox(
                   width: constraints.maxWidth * 0.7,
-                  child: const Text(
-                    'Olá Tony, que combinação de salada de frutas você quer hoje?',
+                  child: Text(
+                    'Olá ${widget.name}, que combinação de salada de frutas você quer hoje?',
                     style: TextStyle(fontSize: 22, color: Color(0xff27214D)),
                     textAlign: TextAlign.start,
                   ),
@@ -82,38 +87,45 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Container(
+                      //margin: EdgeInsets.all(15),
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      height: 70,
                       decoration: BoxDecoration(
                           color: Color(0xffF3F4F9),
-                          borderRadius: BorderRadius.circular(16)),
-                      height: constraints.maxHeight * 0.07,
-                      width: constraints.maxWidth * 0.74,
-                      child: Center(
-                        child: TextFormField(
-                          onChanged: (text) {
-                            setState(() {});
-                          },
-                          keyboardType: TextInputType.text,
-                          controller: searchController,
-                          textAlign: TextAlign.start,
-                          decoration: InputDecoration(
-                            hintText: 'Pesquisar por combinações',
-                            prefixIcon: Icon(Icons.search),
-                            filled: false,
-                            border: InputBorder.none,
-                          ),
-                        ),
+                        borderRadius: BorderRadius.circular(16)
                       ),
-                    ),
-                    GestureDetector(
+                      child: Row(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                        //crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Icon(Icons.search ),
+                          Container(
+
+                            margin: EdgeInsets.only(left: 10),
+                            width: constraints.maxWidth * 0.6,
+                            child: TextFormField(
+                              decoration: InputDecoration(
+
+                                hintText: 'Pesquisar por combinações',
+                                border: InputBorder.none,
+
+
+
+                              ),
+                            ),
+                          )
+
+                        ],
+                      ),
+                    ),GestureDetector(
                       onTap: () {
                         print('Filtro');
                       },
                       child: Image.asset(
                         'assets/images/filtro.png',
-                        scale: 0.65,
+                        scale: 0.7,
                       ),
                     )
                   ],
@@ -131,16 +143,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    CardsPratos(
+                    Dish(
                         image: 'melimao',
                         name: 'Combinação de mel e limão',
-                        price: '2.000',
-                        color: 0xffFFFAEB),
-                    CardsPratos(
+                        price: 20,
+                        color: 0xfff2f2f2),
+                    Dish(
                         image: 'frutasvermelhas',
                         name: 'Combinação de manga e frutas vermelhas',
-                        price: '8.000',
-                        color: 0xffFFFAEB),
+                        price: 25,
+                        color: 0xfff2f2f2),
                   ],
                 ),
                 SizedBox(
@@ -172,20 +184,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
-                      CardsPratos(
+                      Dish(
                           image: 'quinoa',
                           name: 'Salada de Quinoa',
-                          price: '10.000',
+                          price: 15,
                           color: 0xffFFFAEB),
-                      CardsPratos(
+                      Dish(
                           image: 'tropical',
                           name: 'Salada de tropoical',
-                          price: '10.000',
+                          price: 13,
                           color: 0xffFEF0F0),
-                      CardsPratos(
+                      Dish(
                           image: 'melimao',
                           name: 'Salada de berry',
-                          price: '10.000',
+                          price: 10,
                           color: 0xffF1EFF6),
                     ],
                   ),
