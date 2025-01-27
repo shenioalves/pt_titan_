@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/screens/addBasket.dart';
 
 class CardsPratos extends StatefulWidget {
   final String image, name, price;
@@ -15,15 +16,17 @@ class CardsPratos extends StatefulWidget {
 class _CardsPratosState extends State<CardsPratos> {
   @override
   Widget build(BuildContext context) {
+    var screenWidth = MediaQuery.of(context).size.width;
+    var screenHeigth = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(right: 20),
+      padding: const EdgeInsets.only(right: 10),
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
           color: Color(widget.color),
         ),
-        width: 200,
-        height: 270,
+        width: screenWidth * 0.40,
+        height: screenHeigth * 0.25,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -31,8 +34,8 @@ class _CardsPratosState extends State<CardsPratos> {
             Stack(
               children: [
                 Container(
-                  width: 170,
-                  height: 150,
+                  width: screenWidth * 0.35,
+                  height: screenHeigth * 0.1,
                   //  color: Colors.black,
                   child: Image.asset(
                     'assets/images/${widget.image}.png',
@@ -46,8 +49,8 @@ class _CardsPratosState extends State<CardsPratos> {
                       print('favoritos');
                     },
                     child: Container(
-                      width: 35,
-                      height: 35,
+                      width: 30,
+                      height: 30,
                       // color: Colors.red,
                       child: Padding(
                         padding: const EdgeInsets.all(3.0),
@@ -62,9 +65,8 @@ class _CardsPratosState extends State<CardsPratos> {
               ],
             ),
             SizedBox(
-                width: 170,
                 child: Text(
-                  widget.name,
+                  widget.name, style: TextStyle(fontSize: 16, color: Color(0xff27214D)),
                   textAlign: TextAlign.center,
                 )),
             Row(
@@ -77,16 +79,19 @@ class _CardsPratosState extends State<CardsPratos> {
                 ),
                 ElevatedButton(
                     onPressed: () {
-                      print('Add cesta');
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (newContext) => AddBasket(
+                          addCestaContext: context,
+                        ),
+                      ));
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color(0xffffebcc),
                       shape: CircleBorder(),
-                      padding: EdgeInsets.all(5),
                     ),
                     child: Icon(
                       Icons.add,
-                      size: 35,
+                      size: 25,
                       color: Color(0xffFFA451),
                     )),
               ],
