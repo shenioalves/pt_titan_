@@ -33,7 +33,7 @@ class _DishState extends State<Dish> {
             SizedBox(height: 15),
             Stack(
               children: [
-                Container(
+                SizedBox(
                   width: screenWidth * 0.35,
                   height: screenHeigth * 0.1,
                   //  color: Colors.black,

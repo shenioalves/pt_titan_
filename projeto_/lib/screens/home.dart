@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/components/categories.dart';
 import 'package:projeto_/components/dish_card.dart';
 import 'package:projeto_/screens/my_basket.dart';
 
 class HomeScreen extends StatefulWidget {
   final String name;
-  const HomeScreen({super.key, required this.homeContext, required this.name});
+  const HomeScreen({super.key, required this.homeContext, this.name = 'Shenio'});
 
   final BuildContext homeContext;
 
@@ -25,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding:
                 const EdgeInsets.symmetric(vertical: 60.0, horizontal: 30.0),
             child: Column(
+
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -55,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Container(
                               color: Colors.black12,
-                              height: 45,
+                              height: 40,
                               child: Image.asset(
                                 'assets/images/cesta.jpg',
                                 fit: BoxFit.contain,
@@ -155,32 +157,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: 0xfff2f2f2),
                   ],
                 ),
+                SizedBox(height: 10,),
                 SizedBox(
-                  height: 20,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Quente',
-                      style: TextStyle(color: Color(0xff27214D), fontSize: 24),
-                    ),
-                    Text('Popular',
-                        style:
-                            TextStyle(color: Color(0xff938DB5), fontSize: 20)),
-                    Text('Frio',
-                        style:
-                            TextStyle(color: Color(0xff938DB5), fontSize: 20)),
-                    Text('Top',
-                        style:
-                            TextStyle(color: Color(0xff938DB5), fontSize: 20)),
-                  ],
-                ),
+                    height: 40,
+                    child: Categories()),
+
                 SizedBox(
-                  height: 20,
-                ),
-                SizedBox(
-                  height: 280,
+                  height: 210,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
