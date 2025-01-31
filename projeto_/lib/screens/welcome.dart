@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/data/constants.dart';
 import 'package:projeto_/screens/authentication.dart';
 
 class InitialScreen extends StatefulWidget {
@@ -77,8 +78,9 @@ class _InitialScreenState extends State<InitialScreen> {
                           'Obtenha a combinação de salada de frutas mais fresca',
                           style: TextStyle(
                             color: Color(0xff27214D),
-                            fontSize: screenHeight * 0.02,
+                            fontSize: screenHeight * 0.026,
                             decoration: TextDecoration.none,
+                            fontFamily: textFont,
                           ),
                           textAlign: TextAlign.start,
                         ),
@@ -86,8 +88,8 @@ class _InitialScreenState extends State<InitialScreen> {
                           'Entregamos a melhor e mais fresca salada de frutas da cidade. Peça um combo hoje!!!',
                           style: TextStyle(
                             color: Color(0xff5D577E),
-                            fontSize: screenHeight * 0.015,
-                            decoration: TextDecoration.none,
+                            fontSize: screenHeight * 0.02,
+                            decoration: TextDecoration.none,fontFamily: textFont,
                           ),
                         ),
                         ElevatedButton(
@@ -114,7 +116,7 @@ class _InitialScreenState extends State<InitialScreen> {
                                 'Vamos continuar',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: screenHeight * 0.02,
+                                  fontSize: screenHeight * 0.03,fontFamily: textFont,
                                 ),
                               ),
                             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/data/constants.dart';
 import 'package:projeto_/screens/home.dart';
 
 class FormAuthentication extends StatefulWidget {
@@ -95,8 +96,8 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                 'Qual é seu primeiro nome?',
                                 style: TextStyle(
                                   color: Color(0xff27214D),
-                                  fontSize: screenHeight * 0.02,
-                                  decoration: TextDecoration.none,
+                                  fontSize: screenHeight * 0.025,
+                                  decoration: TextDecoration.none,fontFamily: textFont,
                                 ),
                                 // textAlign: TextAlign.start,
                               ),
@@ -116,7 +117,7 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                   ),
                                   hintText: 'Name',
                                   hintStyle:
-                                      TextStyle(color: Color(0xffC2BDBD)),
+                                      TextStyle(color: Color(0xffC2BDBD), fontFamily: textFont, fontSize: 22),
                                   fillColor: Color(0xffF3F1F1),
                                   filled: true,
                                   contentPadding: EdgeInsets.symmetric(

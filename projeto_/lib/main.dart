@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/check.dart';
 import 'package:projeto_/screens/welcome.dart';
 
 void main() {

@@ -3,9 +3,13 @@ import 'package:projeto_/components/categories.dart';
 import 'package:projeto_/components/dish_card.dart';
 import 'package:projeto_/screens/my_basket.dart';
 
+import '../data/constants.dart';
+
 class HomeScreen extends StatefulWidget {
   final String name;
-  const HomeScreen({super.key, required this.homeContext, this.name = 'Shenio'});
+
+  const HomeScreen(
+      {super.key, required this.homeContext, this.name = 'Shenio'});
 
   final BuildContext homeContext;
 
@@ -15,18 +19,21 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController searchController = TextEditingController();
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (_, constraints) {
       return Scaffold(
+        // key: _scaffoldKey,
+        // drawer: Menu(scaffoldKey: _scaffoldKey),
         backgroundColor: Colors.white,
+
         body: SingleChildScrollView(
           child: Padding(
             padding:
                 const EdgeInsets.symmetric(vertical: 60.0, horizontal: 30.0),
             child: Column(
-
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
@@ -36,15 +43,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    GestureDetector(
-                      onTap: () {
-                        print('menu');
+                    InkWell(
+                      onTap: (){
+                        _scaffoldKey.currentState?.openDrawer();
                       },
-                      child: Image.asset(
-                        'assets/images/home1.png',
+                      child: Ink(
+                        child: Icon(Icons.menu,size: 40,),
                       ),
-                    ),
-                    GestureDetector(
+                    ),InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
@@ -52,25 +58,27 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (newContext) =>
                                     MyBasket(basketContext: context)));
                       },
-                      child: SizedBox(
-                        child: Column(
-                          children: [
-                            Container(
-                              color: Colors.black12,
-                              height: 40,
-                              child: Image.asset(
-                                'assets/images/cesta.jpg',
-                                fit: BoxFit.contain,
+                      child: Ink(
+                        child: SizedBox(
+                          child: Column(
+                            children: [
+                              Icon(Icons.shopping_basket_outlined, color: Colors.orange, size: 60,),
+                              SizedBox(
+                                height: 7,
                               ),
-                            ),
-                            SizedBox(
-                              height: 7,
-                            ),
-                            Text('Minha cesta')
-                          ],
+                              Text(
+                                'Minha cesta',
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontFamily: textFont,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
-                    )
+                    ),
+ 
                   ],
                 ),
                 SizedBox(
@@ -80,7 +88,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: constraints.maxWidth * 0.7,
                   child: Text(
                     'Olá ${widget.name}, que combinação de salada de frutas você quer hoje?',
-                    style: TextStyle(fontSize: 22, color: Color(0xff27214D)),
+                    style: TextStyle(
+                        fontSize: 22,
+                        color: Color(0xff27214D),
+                        fontFamily: textFont,
+                        fontWeight: FontWeight.bold),
                     textAlign: TextAlign.start,
                   ),
                 ),
@@ -96,32 +108,26 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 70,
                       decoration: BoxDecoration(
                           color: Color(0xffF3F4F9),
-                        borderRadius: BorderRadius.circular(16)
-                      ),
+                          borderRadius: BorderRadius.circular(16)),
                       child: Row(
-                       mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         //crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Icon(Icons.search ),
+                          Icon(Icons.search),
                           Container(
-
                             margin: EdgeInsets.only(left: 10),
                             width: constraints.maxWidth * 0.6,
                             child: TextFormField(
                               decoration: InputDecoration(
-
                                 hintText: 'Pesquisar por combinações',
                                 border: InputBorder.none,
-
-
-
                               ),
                             ),
                           )
-
                         ],
                       ),
-                    ),GestureDetector(
+                    ),
+                    GestureDetector(
                       onTap: () {
                         print('Filtro');
                       },
@@ -137,7 +143,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Text(
                   'Combo recomendado',
-                  style: TextStyle(fontSize: 30, color: Color(0xff27214D)),
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Color(0xff27214D),
+                      fontFamily: textFont,
+                      fontWeight: FontWeight.bold),
                 ),
                 SizedBox(
                   height: 20,
@@ -157,11 +167,10 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: 0xfff2f2f2),
                   ],
                 ),
-                SizedBox(height: 10,),
                 SizedBox(
-                    height: 40,
-                    child: Categories()),
-
+                  height: 10,
+                ),
+                SizedBox(height: 40, child: Categories()),
                 SizedBox(
                   height: 210,
                   child: ListView(
