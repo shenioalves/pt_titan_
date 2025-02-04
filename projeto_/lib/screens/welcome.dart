@@ -26,33 +26,39 @@ class _InitialScreenState extends State<InitialScreen> {
             right: 0,
             bottom: screenHeight * 0.05,
             child: Center(
-              child: SizedBox(
-                width: screenWidth * 0.82,
-                height: screenHeight * 0.5,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    SizedBox(
-                      width: screenWidth * 0.14,
-                      height: screenHeight * 0.047,
-                      child: Image.asset('assets/images/screen_23.png',
-                          fit: BoxFit.cover),
-                    ),
-                    SizedBox(
-                        width: screenWidth * 0.82,
-                        child: Image.asset('assets/images/screen_2.png',
-                            fit: BoxFit.cover)),
-                    SizedBox(
-                      height: screenHeight * 0.012,
-                    ),
-                    SizedBox(
-                        width: screenWidth * 0.8,
-                        child: Image.asset('assets/images/ellipse_1.png',
-                            fit: BoxFit.cover)),
-                  ],
+              child: Stack(children: [
+                SizedBox(
+
+                  width: screenWidth * 0.82,
+                  //height: screenHeight * 0.,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                          width: screenWidth * 0.82,
+                          child: Image.asset('assets/images/screen_2.png',
+                              fit: BoxFit.cover)),
+                      SizedBox(
+                        height: screenHeight * 0.012,
+                      ),
+                      SizedBox(
+                          width: screenWidth * 0.8,
+                          child: Image.asset('assets/images/ellipse_1.png',
+                              fit: BoxFit.cover)),
+                    ],
+                  ),
                 ),
-              ),
+                Positioned(
+                  right: 0,
+                  child: SizedBox(
+                    width: screenWidth * 0.14,
+                    height: screenHeight * 0.047,
+                    child: Image.asset('assets/images/screen_23.png',
+                        fit: BoxFit.cover),
+                  ),
+                ),
+              ]),
             ),
           ),
         ]),
@@ -89,7 +95,8 @@ class _InitialScreenState extends State<InitialScreen> {
                           style: TextStyle(
                             color: Color(0xff5D577E),
                             fontSize: screenHeight * 0.02,
-                            decoration: TextDecoration.none,fontFamily: textFont,
+                            decoration: TextDecoration.none,
+                            fontFamily: textFont,
                           ),
                         ),
                         ElevatedButton(
@@ -116,7 +123,8 @@ class _InitialScreenState extends State<InitialScreen> {
                                 'Vamos continuar',
                                 style: TextStyle(
                                   color: Colors.white,
-                                  fontSize: screenHeight * 0.03,fontFamily: textFont,
+                                  fontSize: screenHeight * 0.03,
+                                  fontFamily: textFont,
                                 ),
                               ),
                             ),

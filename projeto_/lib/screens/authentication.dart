@@ -43,34 +43,40 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                     right: 0,
                     bottom: screenHeight * 0.04,
                     child: Center(
-                      child: SizedBox(
-                        width: screenWidth * 0.82,
-                        height: screenHeight * 0.6,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            SizedBox(
-                              width: screenWidth * 0.14,
-                              height: screenHeight * 0.047,
-                              child: Image.asset('assets/images/screen_23.png',
-                                  fit: BoxFit.cover),
-                            ),
-                            SizedBox(
-                                width: screenWidth * 0.82,
-                                child: Image.asset('assets/images/screen_3.png',
-                                    fit: BoxFit.cover)),
-                            SizedBox(
-                              height: screenHeight * 0.012,
-                            ),
-                            SizedBox(
-                                width: screenWidth * 0.8,
-                                child: Image.asset(
-                                    'assets/images/ellipse_1.png',
-                                    fit: BoxFit.cover)),
-                          ],
+                      child: Stack(children: [
+                        SizedBox(
+                          width: screenWidth * 0.82,
+                          // height: screenHeight * 0.6,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              SizedBox(
+                                  width: screenWidth * 0.82,
+                                  child: Image.asset(
+                                      'assets/images/screen_3.png',
+                                      fit: BoxFit.cover)),
+                              SizedBox(
+                                height: screenHeight * 0.012,
+                              ),
+                              SizedBox(
+                                  width: screenWidth * 0.8,
+                                  child: Image.asset(
+                                      'assets/images/ellipse_1.png',
+                                      fit: BoxFit.cover)),
+                            ],
+                          ),
                         ),
-                      ),
+                        Positioned(
+                          right: 0,
+                          child: SizedBox(
+                            width: screenWidth * 0.14,
+                            height: screenHeight * 0.047,
+                            child: Image.asset('assets/images/screen_23.png',
+                                fit: BoxFit.cover),
+                          ),
+                        ),
+                      ]),
                     ),
                   ),
                 ]),
@@ -97,7 +103,8 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                 style: TextStyle(
                                   color: Color(0xff27214D),
                                   fontSize: screenHeight * 0.025,
-                                  decoration: TextDecoration.none,fontFamily: textFont,
+                                  decoration: TextDecoration.none,
+                                  fontFamily: textFont,
                                 ),
                                 // textAlign: TextAlign.start,
                               ),
@@ -116,8 +123,10 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                     borderSide: BorderSide.none,
                                   ),
                                   hintText: 'Name',
-                                  hintStyle:
-                                      TextStyle(color: Color(0xffC2BDBD), fontFamily: textFont, fontSize: 22),
+                                  hintStyle: TextStyle(
+                                      color: Color(0xffC2BDBD),
+                                      fontFamily: textFont,
+                                      fontSize: 22),
                                   fillColor: Color(0xffF3F1F1),
                                   filled: true,
                                   contentPadding: EdgeInsets.symmetric(
@@ -136,11 +145,13 @@ class _FormAuthenticationState extends State<FormAuthentication> {
                                     ),
                                   ),
                                   onPressed: () {
-                                    if (_FormKey.currentState!.validate()){
+                                    if (_FormKey.currentState!.validate()) {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (newContext) => HomeScreen(homeContext: context, name: firstNameController.text),
+                                            builder: (newContext) => HomeScreen(
+                                                homeContext: context,
+                                                name: firstNameController.text),
                                           ));
                                     }
                                   },

@@ -80,12 +80,14 @@ class _MyBasketState extends State<MyBasket> {
                 ),
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              Delivery(deliveryContext: context),
-                        ));
+                    showModalBottomSheet(
+                      context: context,
+                      isScrollControlled: true,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                      ),
+                      builder: (context) => Delivery(),
+                    );
                   },
                   child: Ink(
                     width: 200,
@@ -94,8 +96,7 @@ class _MyBasketState extends State<MyBasket> {
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(14),
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12.0),
+                    child: Center(
                       child: Text(
                         'Checkout',
                         textAlign: TextAlign.center,
@@ -104,6 +105,7 @@ class _MyBasketState extends State<MyBasket> {
                     ),
                   ),
                 ),
+
               ],
             ),
           ),
