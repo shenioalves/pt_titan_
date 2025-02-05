@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/dish_card.dart';
 
-class Tracking extends StatefulWidget {
+class Trace extends StatefulWidget {
   final BuildContext trackingContext;
 
-  const Tracking({super.key, required this.trackingContext});
+  const Trace({super.key, required this.trackingContext});
 
   @override
-  State<Tracking> createState() => _TrackingState();
+  State<Trace> createState() => _TraceState();
 }
 
-class _TrackingState extends State<Tracking> {
+class _TraceState extends State<Trace> {
   @override
   Widget build(BuildContext context) {
     double screenHeigth = MediaQuery.of(context).size.height;
@@ -61,7 +60,7 @@ class _TrackingState extends State<Tracking> {
                 child: SizedBox(
                   height: screenHeigth * .55,
                   width: 50,
-                  child: RotatedBox(quarterTurns: 1, child: Text('.............................................................................................................', style: TextStyle(color: Colors.orange, fontSize: 30),),),
+                  child: RotatedBox(quarterTurns: 1, child: Text('............................................................................................................', style: TextStyle(color: Colors.orange, fontSize: 30),),),
                 ),
               ),
               SizedBox(

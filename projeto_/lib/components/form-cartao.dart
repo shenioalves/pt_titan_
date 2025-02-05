@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/screens/tracking.dart';
+import 'package:projeto_/screens/trace.dart';
 
-import '../components/check.dart';
+import 'check.dart';
 
 class FormCartao extends StatelessWidget {
   final BuildContext cartaoContect;

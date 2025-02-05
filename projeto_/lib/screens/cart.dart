@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/screens/form-delivery.dart';
+import 'package:projeto_/components/form-delivery.dart';
 
-class MyBasket extends StatefulWidget {
-  final BuildContext basketContext;
+class Cart extends StatefulWidget {
+  final BuildContext? cartContext;
 
-  const MyBasket({super.key, required this.basketContext});
+  const Cart({super.key, required this.cartContext});
 
   @override
-  State<MyBasket> createState() => _MyBasketState();
+  State<Cart> createState() => _CartState();
 }
 
-class _MyBasketState extends State<MyBasket> {
+class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

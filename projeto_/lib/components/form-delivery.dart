@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/components/check.dart';
-import 'package:projeto_/screens/form-cartao.dart';
+import 'package:projeto_/components/form-cartao.dart';
 
 class Delivery extends StatelessWidget {
   const Delivery({super.key});

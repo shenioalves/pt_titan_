@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/components/favorite.dart';
-import 'package:projeto_/screens/add_basket.dart';
+import 'package:projeto_/screens/info_prato.dart';
+import 'package:projeto_/data/dish_model.dart';
+
+import '../data/list_favorite.dart';
 
 class Dish extends StatefulWidget {
-  final String image, name;
-  final int price, color;
+  final DishModel dish;
+  final BuildContext? dishContext;
 
-  const Dish(
-      {super.key,
-      required this.image,
-      required this.name,
-      required this.price,
-      required this.color});
+  const Dish({super.key, required this.dish, this.dishContext});
 
   @override
   State<Dish> createState() => _DishState();
@@ -27,10 +25,10 @@ class _DishState extends State<Dish> {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Color(widget.color),
+          color: Color(widget.dish.color),
         ),
         width: screenWidth * 0.41,
-        height: screenHeigth * 0.25,
+        height: screenHeigth * 0.23,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -41,19 +39,32 @@ class _DishState extends State<Dish> {
                   width: screenWidth * 0.35,
                   height: screenHeigth * 0.1,
                   child: Image.asset(
-                    'assets/images/${widget.image}.png',
+                    'assets/images/${widget.dish.image}.png',
                     scale: 0.7,
                   ),
                 ),
                 Positioned(
                   right: 0,
-                  child: Favorite(),
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        widget.dish.toggleFavorite();
+                      });
+                    },
+                    child: Icon(
+                      widget.dish.isFavorite
+                          ? Icons.favorite
+                          : Icons.favorite_border,
+                      color: Colors.orange,
+                      size: 35,
+                    ),
+                  ),
                 )
               ],
             ),
             SizedBox(
                 child: Text(
-              widget.name,
+              widget.dish.name,
               style: TextStyle(fontSize: 15, color: Color(0xff27214D)),
               textAlign: TextAlign.center,
             )),
@@ -61,7 +72,7 @@ class _DishState extends State<Dish> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Text(
-                  'R\$ ${widget.price},00',
+                  'R\$ ${widget.dish.price},00',
                   style: TextStyle(color: Color(0xffFFA451), fontSize: 16),
                 ),
                 ElevatedButton(
@@ -69,12 +80,12 @@ class _DishState extends State<Dish> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (newContext) => AddBasket(
+                            builder: (newContext) => InfoPrato(
                               addCestaContext: context,
-                              image: widget.image,
-                              name: widget.name,
-                              price: widget.price,
-
+                              dish: DishModel(
+                                  image: widget.dish.image,
+                                  name: widget.dish.name,
+                                  price: widget.dish.price),
                             ),
                           ));
                     },

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/data/constants.dart';
 import 'package:projeto_/screens/home.dart';
-import 'package:projeto_/screens/tracking.dart';
+import 'package:projeto_/screens/trace.dart';
 
 class Check extends StatelessWidget {
   final BuildContext checkContext;
@@ -10,6 +10,7 @@ class Check extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffffffff),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -50,7 +51,7 @@ class Check extends StatelessWidget {
             onTap: () {Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (newContext) => Tracking(trackingContext: context),
+                  builder: (newContext) => Trace(trackingContext: context),
                 ));},
             child: Ink(
               width: 180,

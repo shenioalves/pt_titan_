@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/components/categories.dart';
 import 'package:projeto_/components/dish_card.dart';
-import 'package:projeto_/screens/my_basket.dart';
+import 'package:projeto_/data/dish_model.dart';
+import 'package:projeto_/screens/cart.dart';
 
 import '../data/constants.dart';
 
@@ -44,25 +45,33 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         _scaffoldKey.currentState?.openDrawer();
                       },
                       child: Ink(
-                        child: Icon(Icons.menu,size: 40,),
+                        child: Icon(
+                          Icons.menu,
+                          size: 40,
+                        ),
                       ),
-                    ),InkWell(
+                    ),
+                    InkWell(
                       onTap: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (newContext) =>
-                                    MyBasket(basketContext: context)));
+                                    Cart(cartContext: context)));
                       },
                       child: Ink(
                         child: SizedBox(
                           child: Column(
                             children: [
-                              Icon(Icons.shopping_basket_outlined, color: Colors.orange, size: 60,),
+                              Icon(
+                                Icons.shopping_basket_outlined,
+                                color: Colors.orange,
+                                size: 60,
+                              ),
                               SizedBox(
                                 height: 7,
                               ),
@@ -78,7 +87,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
- 
                   ],
                 ),
                 SizedBox(
@@ -128,9 +136,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('Filtro');
-                      },
                       child: Image.asset(
                         'assets/images/filtro.png',
                         scale: 0.7,
@@ -156,41 +161,52 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Dish(
-                        image: 'melimao',
-                        name: 'Combinação de mel e limão',
-                        price: 20,
-                        color: 0xfff2f2f2),
+                        dish: DishModel(
+                      image: 'melimao',
+                      name: 'Combinação de mel e limão',
+                      price: 20,
+                       color: 0xfff2f2f2,
+                    )),
                     Dish(
+                      dish: DishModel(
+                        color: 0xfff2f2f2,
                         image: 'frutasvermelhas',
                         name: 'Combinação de manga e frutas vermelhas',
                         price: 25,
-                        color: 0xfff2f2f2),
+                      ),
+                    ),
                   ],
                 ),
                 SizedBox(
                   height: 10,
                 ),
                 SizedBox(height: 40, child: Categories()),
+                SizedBox(height: 10,),
                 SizedBox(
-                  height: 210,
+                  height: 230,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
                     children: [
                       Dish(
-                          image: 'quinoa',
-                          name: 'Salada de Quinoa',
-                          price: 15,
-                          color: 0xffFFFAEB),
+                          dish: DishModel(
+                              image: 'quinoa',
+                              name: 'Salada de Quinoa',
+                              price: 15,
+                              color: 0xffFFFAEB)),
                       Dish(
-                          image: 'tropical',
-                          name: 'Salada de tropoical',
-                          price: 13,
-                          color: 0xffFEF0F0),
+                        dish: DishModel(
+                            image: 'tropical',
+                            name: 'Salada de tropoical',
+                            price: 13,
+                            color: 0xffFEF0F0),
+                      ),
                       Dish(
-                          image: 'melimao',
-                          name: 'Salada de berry',
-                          price: 10,
-                          color: 0xffF1EFF6),
+                        dish: DishModel(
+                            image: 'melimao',
+                            name: 'Salada de berry',
+                            price: 10,
+                            color: 0xffF1EFF6),
+                      ),
                     ],
                   ),
                 )
