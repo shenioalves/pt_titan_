@@ -6,6 +6,7 @@ import 'package:projeto_/screens/cart.dart';
 
 import '../data/constants.dart';
 
+
 class HomeScreen extends StatefulWidget {
   final String name;
 
@@ -46,7 +47,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     InkWell(
                       onTap: () {
-                        _scaffoldKey.currentState?.openDrawer();
                       },
                       child: Ink(
                         child: Icon(
@@ -61,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                                 builder: (newContext) =>
-                                    Cart(cartContext: context)));
+                                    Cart(cartContext: context,)));
                       },
                       child: Ink(
                         child: SizedBox(

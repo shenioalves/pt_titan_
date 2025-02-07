@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/favorite.dart';
 import 'package:projeto_/screens/info_prato.dart';
 import 'package:projeto_/data/dish_model.dart';
 
-import '../data/list_favorite.dart';
 
 class Dish extends StatefulWidget {
   final DishModel dish;
@@ -49,6 +47,15 @@ class _DishState extends State<Dish> {
                     onTap: () {
                       setState(() {
                         widget.dish.toggleFavorite();
+                        widget.dish.isFavorite ? ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Adicionado aos favoritos!'),
+                          ),
+                        ) : ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                            content: Text('Removido aos favoritos'),
+                          ),
+                        );
                       });
                     },
                     child: Icon(

@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/favorite.dart';
+
 import 'package:projeto_/data/dish_model.dart';
-import 'package:projeto_/screens/cart.dart';
 
 import '../data/constants.dart';
+import '../data/list_car.dart';
+
+
 
 class InfoPrato extends StatefulWidget {
   final BuildContext addCestaContext;
-
-  // final String image, name;
-  // final int price;
-
   final DishModel dish;
   static List<DishModel> favoriteList = [];
+
   const InfoPrato(
       {super.key, required this.addCestaContext, required this.dish});
 
@@ -126,9 +125,8 @@ class _InfoPratoState extends State<InfoPrato> {
                                         )),
                                   ],
                                 ),
-
                                 Text(
-                                  'R\$ ${widget.dish.quantidade * widget.dish.price},00',
+                                  'R\$ ${widget.dish.calcularCustoTotal()},00',
                                   style: TextStyle(fontSize: 22),
                                 ),
                               ],
@@ -200,10 +198,12 @@ class _InfoPratoState extends State<InfoPrato> {
                                       setState(() {
                                         if (isFavorite) {
                                           widget.dish.toggleFavorite();
-                                          InfoPrato.favoriteList.remove(widget.dish);
+                                          InfoPrato.favoriteList
+                                              .remove(widget.dish);
                                         } else {
                                           widget.dish.toggleFavorite();
-                                          InfoPrato.favoriteList.add(widget.dish);
+                                          InfoPrato.favoriteList
+                                              .add(widget.dish);
                                         }
                                       });
                                     },
@@ -218,11 +218,20 @@ class _InfoPratoState extends State<InfoPrato> {
                                 ),
                                 InkWell(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (newContext) =>
-                                                Cart(cartContext: context)));
+                                    CartInherited.of(context).addToCart(
+                                      widget.dish.image,
+                                      widget.dish.name,
+                                      widget.dish.price,
+                                      widget.dish.quantidade,
+                                      widget.dish.color,
+                                    );
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Adicionado à cesta!'),
+                                      ),
+                                    );
+                                    Navigator.pop(context);
+
                                   },
                                   child: Ink(
                                     height: constraints.maxHeight * .06,

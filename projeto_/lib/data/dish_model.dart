@@ -31,4 +31,8 @@ class DishModel {
   void toggleFavorite() {
     _isFavorite = !_isFavorite;
   }
+
+  int calcularCustoTotal() {
+    return price * _quantidade;
+  }
 }

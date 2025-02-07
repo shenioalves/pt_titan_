@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_/components/form-delivery.dart';
+import 'package:projeto_/components/form_delivery.dart';
+import 'package:projeto_/data/dish_model.dart';
+
+import '../components/dish_cart.dart';
+import '../data/list_car.dart';
+
 
 class Cart extends StatefulWidget {
   final BuildContext? cartContext;
-
-  const Cart({super.key, required this.cartContext});
+  final DishModel? dishModel;
+  const Cart({super.key, required this.cartContext, this.dishModel});
 
   @override
   State<Cart> createState() => _CartState();
 }
 
 class _CartState extends State<Cart> {
+  int calcularTotal() {
+    int total = 0;
+    for (var dish in CartInherited.of(context).listCart) {
+      total += dish.price * dish.quantidade;
+    }
+    return total;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +36,6 @@ class _CartState extends State<Cart> {
             child: Padding(
               padding: const EdgeInsets.only(top: 50.0, left: 20),
               child: Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ElevatedButton(
                       onPressed: () {
@@ -35,6 +47,7 @@ class _CartState extends State<Cart> {
                             Icons.arrow_back_ios_new_outlined,
                             color: Colors.black,
                           ),
+                          SizedBox(width: 10),
                           Text(
                             'Voltar',
                             style: TextStyle(color: Colors.black),
@@ -53,10 +66,14 @@ class _CartState extends State<Cart> {
             ),
           ),
           Expanded(
-            child:  ListView(
-              padding: EdgeInsets.only(top: 6, bottom: 70),
-              //children: DishInherite.of(context).dishesList,
-            ),
+            child: ListView.builder(
+              itemCount: CartInherited.of(context).listCart.length,
+              itemBuilder: (context, index) {
+                final dish = CartInherited.of(context).listCart[index];
+                return DishCart(dishModel: dish);
+              },
+            )
+            ,
           ),
           Padding(
             padding: const EdgeInsets.only(left: 30, bottom: 40, right: 30),
@@ -73,7 +90,7 @@ class _CartState extends State<Cart> {
                       ),
                     ),
                     Text(
-                      'R\$100,00',
+                      'R\$ ${calcularTotal()},00',
                       style: TextStyle(fontSize: 22),
                     )
                   ],
@@ -105,7 +122,6 @@ class _CartState extends State<Cart> {
                     ),
                   ),
                 ),
-
               ],
             ),
           ),
@@ -114,3 +130,4 @@ class _CartState extends State<Cart> {
     );
   }
 }
+

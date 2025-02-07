@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/screens/welcome.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+import 'data/list_car.dart';
 
+void main() {
+  runApp(
+
+    CartInherited(
+      child: MyApp(),
+    ),
+  );
+}
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 

@@ -12,8 +12,8 @@ class FormCartao extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeigth = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
-    return Stack(children: [
-      Container(
+    return SingleChildScrollView(
+      child: Container(
         width: screenWidth,
         height: screenHeigth * .55,
         decoration: BoxDecoration(
@@ -71,7 +71,7 @@ class FormCartao extends StatelessWidget {
                   ),
                   Container(
                     height: 70,
-
+      
                     //   width: screenWidth,
                     decoration: BoxDecoration(
                         color: Color(0xffeeeff6),
@@ -211,7 +211,7 @@ class FormCartao extends StatelessWidget {
           ],
         ),
       ),
-    ]);
+    );
   }
 }
 
