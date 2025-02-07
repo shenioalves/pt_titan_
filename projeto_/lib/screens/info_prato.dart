@@ -26,9 +26,9 @@ class _InfoPratoState extends State<InfoPrato> {
   Widget build(BuildContext context) {
     bool isFavorite = InfoPrato.favoriteList.contains(widget.dish);
     return Scaffold(
-        backgroundColor: Color(0xffFFA451),
+        backgroundColor: Colors.orange,
         appBar: AppBar(
-          backgroundColor: Color(0xffFFA451),
+          backgroundColor: Colors.orange,
         ),
         body: LayoutBuilder(
           builder: (_, constraints) {
@@ -123,7 +123,7 @@ class _InfoPratoState extends State<InfoPrato> {
                                         child: Icon(
                                           Icons.add,
                                           size: 25,
-                                          color: Color(0xffFFA451),
+                                          color: Colors.orange,
                                         )),
                                   ],
                                 ),
@@ -241,7 +241,7 @@ class _InfoPratoState extends State<InfoPrato> {
                                     width: constraints.maxWidth * .6,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                          color: Color(0xffFFA451),
+                                          color: Colors.orange,
                                           borderRadius:
                                               BorderRadius.circular(16)),
                                       child: Padding(

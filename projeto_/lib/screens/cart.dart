@@ -33,7 +33,7 @@ class _CartState extends State<Cart> {
         children: [
           Container(
             height: 180,
-            color: Color(0xffFFA451),
+            color: Colors.orange,
             child: Padding(
               padding: const EdgeInsets.only(top: 50.0, left: 20),
               child: Row(
