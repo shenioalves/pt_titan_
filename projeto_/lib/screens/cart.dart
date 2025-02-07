@@ -3,6 +3,7 @@ import 'package:projeto_/components/form_delivery.dart';
 import 'package:projeto_/data/dish_model.dart';
 
 import '../components/dish_cart.dart';
+import '../data/constants.dart';
 import '../data/list_car.dart';
 
 
@@ -86,12 +87,14 @@ class _CartState extends State<Cart> {
                     Text(
                       'Total',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 22,fontFamily: textFont,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       'R\$ ${calcularTotal()},00',
-                      style: TextStyle(fontSize: 22),
+                      style: TextStyle(fontSize: 22,fontFamily: textFont,
+                          fontWeight: FontWeight.bold),
                     )
                   ],
                 ),

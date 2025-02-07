@@ -73,7 +73,9 @@ class _InfoPratoState extends State<InfoPrato> {
                               style: TextStyle(
                                   fontSize: 40,
                                   fontFamily: textFont,
-                                  fontWeight: FontWeight.bold),
+                                  fontWeight: FontWeight.bold,
+                              ),maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
                             ),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -224,6 +226,7 @@ class _InfoPratoState extends State<InfoPrato> {
                                       widget.dish.price,
                                       widget.dish.quantidade,
                                       widget.dish.color,
+                                      widget.dish.isFavorite
                                     );
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(

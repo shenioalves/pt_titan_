@@ -92,7 +92,9 @@ class _DishState extends State<Dish> {
                               dish: DishModel(
                                   image: widget.dish.image,
                                   name: widget.dish.name,
-                                  price: widget.dish.price),
+                                  price: widget.dish.price,
+
+                              ),
                             ),
                           ));
                     },
