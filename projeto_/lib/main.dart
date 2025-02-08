@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_/screens/splash_screen.dart';
 import 'package:projeto_/screens/welcome.dart';
 
 import 'data/list_car.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: InitialScreen(),
+      home: SplashScreen(),
     );
   }
 }
