@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_/screens/splash_screen.dart';
-import 'package:projeto_/screens/welcome.dart';
-
-import 'data/list_car.dart';
 
 void main() {
   runApp(
